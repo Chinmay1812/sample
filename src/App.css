@@ -1,0 +1,262 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  margin-top: 96px;
+}
+
+.main-content {
+  margin-left: 219px; 
+  flex: 1;
+  background-color: #f8fafc;
+  overflow-x: hidden;
+  overflow-y: auto; 
+  min-height: 100vh; 
+}
+
+
+.oracle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; 
+  background-color: white;
+  z-index: 1100;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 0;
+}
+
+.layout-grid {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  max-width: 1400px;
+  margin: 24px auto 0 auto;
+  padding: 0 24px; 
+  min-height: calc(100vh - 120px); 
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Remove gap between ServiceCard and PricingCard */
+  flex-shrink: 0;
+  width: 380px;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+  min-width: 0;
+  align-items: stretch; /* Ensure both components have same width */
+}
+
+/* ServiceCard Container - No bottom margin/border radius for seamless connection */
+.service-card-container {
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 16px 16px 0 0; /* Only top corners rounded */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  border-bottom: none; /* Remove bottom border for seamless connection */
+}
+
+/* PricingCard styling - connects seamlessly to ServiceCard */
+.pricing-card {
+  width: 100%;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-top: none; /* Remove top border for seamless connection */
+  border-radius: 0 0 16px 16px; /* Only bottom corners rounded */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ServiceDetailsForm styling - ensure proper spacing and alignment */
+.service-form {
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  margin: 0 !important;
+  position: relative !important;
+}
+
+.maintenance-settings {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  margin: 0 !important;
+  position: relative !important;
+}
+
+.main-content *,
+.main-content .service-form *,
+.main-content .maintenance-settings *,
+.main-content .service-card-container *,
+.main-content .pricing-card * {
+  position: static !important;
+}
+
+.right-column > * {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  clear: both !important;
+}
+
+.service-form,
+.maintenance-settings {
+  transform: none !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  float: none !important;
+}
+
+.pricing-card {
+  overflow: visible; 
+}
+
+.pricing-card * {
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 1200px) {
+  .layout-grid {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 20px;
+  }
+  
+  .left-column {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .right-column {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .layout-grid {
+    gap: 16px;
+    padding: 0 16px;
+  }
+  
+  .left-column {
+    width: 100%;
+  }
+  
+  .app-container {
+    margin-top: 96px; /* Maintain top margin for mobile */
+  }
+  
+  .tessell-sidebar {
+    top: 96px; /* Keep sidebar below top bar on mobile */
+  }
+}
+
+/* Additional rules to prevent any overlapping */
+.right-column {
+  overflow: visible;
+}
+
+.right-column > *:first-child {
+  margin-top: 0 !important;
+}
+
+.right-column > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Ensure proper stacking context */
+.service-form {
+  z-index: 1;
+}
+
+.maintenance-settings {
+  z-index: 1;
+}
+
+/* CRITICAL: ServiceDetailsForm Complete Override */
+.right-column .service-form {
+  display: block !important;
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: auto !important;
+  margin: 0 !important;
+  padding: 24px !important;
+  background: #fff !important;
+  border-radius: 12px !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  z-index: 10 !important;
+  transform: none !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  float: none !important;
+}
+
+/* Fix form layout issues */
+.service-form .form-group {
+  width: 100% !important;
+  margin-bottom: 24px !important;
+  position: relative !important;
+  display: block !important;
+}
+
+.service-form .form-row {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 16px !important;
+  margin-bottom: 24px !important;
+}
+
+@media (min-width: 768px) {
+  .service-form .form-row {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* Fix input and select sizing */
+.service-form .form-input,
+.service-form .form-select,
+.service-form .form-textarea {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure proper spacing between components */
+.right-column > .service-form + .maintenance-settings {
+  margin-top: 32px !important;
+}
